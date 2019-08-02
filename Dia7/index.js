@@ -20,6 +20,21 @@ app.get("/", (req, res) => {
     res.status(200).sendfile("index.html");
 });
 
+// Funciones
+
+const getPokemon = (name) => {
+    let options = {
+        method: 'GET',
+        uri: `https://pokeapi.co/api/v2/pokemon/${name}/`,
+        body: {
+            some: 'payload'
+        },
+        json: true
+    };
+    const json = rp(options);
+    return json;
+}
+
 app.get("/nombre", (req, res) => {
     const respuesta = {
         nombre: "Gerardo",
@@ -38,23 +53,11 @@ app.get("/sensei", (req, res) => {
 
 // Params
 app.get("/pokemon/:nombre/", (req, res) => {
-    // Get POKEAPI
-    // Instancia de la clase Pokemon
-    // Devolver objeto pokemon limpio
-
-    // this.name = nombre;
-    // this.imagen = imagen;
-    // this.id = id;
-    // this.movimientos = {
-    //     movimiento1: move1,
-    //     movimiento2: move2,
-    //     movimiento3: move3,
-    //     movimiento4: move4
-    // }
-
-    console.log(req.params);
-    const { nombre, tipo } = req.params;
-    res.status(200).send(`El pokémon que intentas buscar es ${nombre}.`);
+    const { nombre } = req.params;
+    getPokemon(nombre).then((data) => {
+        let respuesta = new Pokemon(data.name, data.sprites.front_default, data.id, data.moves[0].move.name, data.moves[1].move.name, data.moves[2].move.name, data.moves[3].move.name);
+        res.status(200).send(respuesta);
+    });
 });
 
 // Query Parameters
