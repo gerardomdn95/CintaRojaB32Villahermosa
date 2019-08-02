@@ -1,0 +1,26 @@
+{
+  "name": "dia7",
+  "version": "1.0.0",
+  "description": "Mi primer servidor hecho con Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "http"
+  ],
+  "author": "Gerardo Medina",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
