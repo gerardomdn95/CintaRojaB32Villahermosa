@@ -21,7 +21,6 @@ app.get("/", (req, res) => {
 });
 
 // Funciones
-
 const getPokemon = (name) => {
     let options = {
         method: 'GET',
@@ -55,9 +54,24 @@ app.get("/sensei", (req, res) => {
 app.get("/pokemon/:nombre/", (req, res) => {
     const { nombre } = req.params;
     getPokemon(nombre).then((data) => {
-        let respuesta = new Pokemon(data.name, data.sprites.front_default, data.id, data.moves[0].move.name, data.moves[1].move.name, data.moves[2].move.name, data.moves[3].move.name);
+        const respuesta = new Pokemon(data.name, 
+                                      data.sprites.front_default, 
+                                      data.id, 
+                                      data.moves[0].move.name,
+                                      data.moves[1].move.name, 
+                                      data.moves[2].move.name,
+                                      data.moves[3].move.name);
         res.status(200).send(respuesta);
+    }).catch(error => {
+        console.log(error.statusMessage);
+        res.status(error.statusCode).send(error.statusCode);
     });
+});
+
+getPokemon("pikachu").then(data => {
+
+}).catch(error => {
+
 });
 
 // Query Parameters
