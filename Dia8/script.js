@@ -9,7 +9,7 @@ const numeros = [2, 10, 8];
 //     console.log(elemento);
 // });
 
-// // Imperativa
+// Imperativa
 // for(let i = 0; arreglo.length > i; i++){
 //     console.log(arreglo[i]);
 // }
