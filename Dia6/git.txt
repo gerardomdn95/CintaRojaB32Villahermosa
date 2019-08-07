@@ -1,5 +1,5 @@
-* ls -> Muestra los elementos.
-* cd -> Change directiry, nos movemos a una carpeta.
+* ls -> Muestra los ficheros en la ruta actual.
+* cd -> Change directory, nos movemos a una carpeta.
 * git -> Muestra ayuda de los comandos disponibles para git
 * git status -> Nos muestra los cambio que se han hecho en el repositorio
 * git add -A -> Preparamos los cambios que vamos a subir
