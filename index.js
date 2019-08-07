@@ -3,11 +3,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const { router } = require("./routes/routes");
+const { router } = require("./src/routes/routes");
 const MONGOURI = require("./config/keys").mongoURI;
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+app.use((req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

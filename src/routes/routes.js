@@ -4,7 +4,7 @@ const router = express.Router();
 const { Movie } = require("../models/movie");
 
 router.get("/", (req, res) => {
-    res.status(200).send({ response: "Corriendo desde routes" });
+    res.status(200).sendFile("../views/index.html");
 });
 
 // CREATE
