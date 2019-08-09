@@ -1,11 +1,9 @@
 import React from 'react'
 
-const Header = ({titulo}) => {
-    return (
-        <header>
-            <h1>{titulo}</h1>
-        </header>
-    )
-}
+const Header = (props) =>(
+    <nav className="navbar navbar-dark bg-primary">
+        <a className="navbar-brand" href="..">{props.titulo}</a>
+    </nav>
+    );
 
-export default Header
+export default Header;

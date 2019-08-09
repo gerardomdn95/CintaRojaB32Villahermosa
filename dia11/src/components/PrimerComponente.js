@@ -1,14 +1,23 @@
-import React, { Component } from 'react'
+//rce genera el template del componente
+import React from 'react'
 
-const PrimerComponente = () => (
-    <div>
-        <h1>Desde el componente</h1>
-        <p>Holi</p>
-    </div>
-)
+export class Componente1 extends Component {
+    render() {
+        return (<h1>Hola Mundo</h1>
+        )
+    }
+}
+
+// Métodos
+const PrimerComponente = () => (<h1>Hola Mundo</h1>);
+
+const Componente2 = () => {
+    return (<h1>Hola Mundo</h1>)
+}
+
+//Componente Padre
+function Primer(){
+    return (<h1>Hola Mundo</h1>)
+}
 
 export default PrimerComponente
-
-
-
-

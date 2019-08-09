@@ -1,63 +1,48 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Pelicula from './Pelicula';
+import axios from "axios";
 
 export class ListaPeliculas extends Component {
     state = {
-        peliculas: [
-            {
-                movieId: "1",
-                title: "Matrix",
-                year: "2012",
-                description: "jdjdjdj",
-                image: "https%3A%2F%2Fwww.chiquipedia.com%2Fimagenes%2Fimagenes-animo09.jpg&imgrefurl=https%3A%2F%2Fwww.chiquipedia.com%2Fimagenes-bonitas%2F&docid=oBYNPiKCxvhIUM&tbnid=shW1AsExROeDwM%3A&vet=10ahUKEwj-wc3ykvLjAhUDbKwKHdyXBPwQMwisASgBMAE..i&w=1024&h=535&bih=741&biw=1440&q=imagenes&ved=0ahUKEwj-wc3ykvLjAhUDbKwKHdyXBPwQMwisASgBMAE&iact=mrc&uact=8",
-                theme: "action",
-                director: "lalla"
-            },
-            {
-                movieId: "2",
-                title: "Miercoles",
-                year: "2012",
-                description: "jdjdjdj",
-                image: "link",
-                theme: "action",
-                director: "lalla"
-            }, 
-            {
-                movieId: "3",
-                title: "Jueves",
-                year: "2012",
-                description: "jdjdjdj",
-                image: "link",
-                theme: "action",
-                director: "lalla"
-            }
-        ]
+        peliculas: []
     }
-    componentDidMount(){
-        console.log("DidMunt");
+    //Métodos de ciclo de vida
+
+    componentDidMount() {
+
     }
 
     componentWillMount() {
-        console.log("WillMount");
+        axios.get("https://cintaroja32.herokuapp.com/api/v1/pelicula")
+        .then(peliculas => {
+            console.log("Request correcto");
+            console.log(peliculas.data);
+            this.setState({peliculas: peliculas.data})
+        })
+        .catch(err => console.log(err));
     }
+
     componentDidUpdate() {
-        console.log("DidUpdate");
+
     }
 
     render() {
-        console.log("Render");
+        const { peliculas } = this.state;
         return (
-            <div>
-                <h1>Lista de Pelìculas</h1>
-                {this.state.peliculas.map(pelicula => (
-                    <Pelicula
-                        key ={pelicula.movieId}
-                        pelicula = {pelicula}
-                    />
-                ))}
+            <div className="container">
+                <h1>Lista de Peliculas</h1>
+                <div className="row">
+                    {peliculas.map(pelicula => (
+                        <Pelicula
+                            key={pelicula.movieId}
+                            pelicula={pelicula}
+                        />
+                    ))}
+                </div>
+
             </div>
         )
     }
 }
 
-export default ListaPeliculas
+export default ListaPeliculas;
