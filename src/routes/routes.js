@@ -1,10 +1,11 @@
 const express = require("express");
+const path = require('path');
 const router = express.Router();
 
 const { Movie } = require("../models/movie");
 
 router.get("/", (req, res) => {
-    res.status(200).sendFile("../views/index.html");
+    res.status(200).sendFile(path.resolve("src/views/index.html"));
 });
 
 // CREATE
