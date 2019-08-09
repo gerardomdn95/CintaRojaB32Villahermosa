@@ -36,7 +36,7 @@ conf = {
     }
 };
 // use origin undefined handler, then cors for all paths
-app.use(conf.originUndefined, cors(conf.cors));
+router.use(conf.originUndefined, cors(conf.cors));
 
 const { Movie } = require("../models/movie");
 
@@ -45,7 +45,7 @@ router.get("/", (req, res) => {
 });
 
 // CREATE
-router.post("/api/v1/pelicula", (req, res) => {
+router.post("/api/v1/pelicula", (req, res, next) => {
     const { title, year, description, image, theme, director } = req.body;
     const newMovie = Movie({
         title,
