@@ -1,19 +1,18 @@
-import React, {Fragment} from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import ListaPeliculas from './components/ListaPeliculas';
+import React, { Fragment } from 'react';
+
+// Router
+import { BrowserRouter, Route } from 'react-router-dom';
+import MainContainer from './containers/MainContainer/MainContainer';
+import AddMovieContainer from './containers/AddMovieContainer/AddMovieContainer';
 
 function App() {
-  const fecha = new Date().getFullYear();
   return (
+
     <Fragment>
-      <Header 
-        titulo='Neflis'
-      />
-      <ListaPeliculas/>
-      <Footer
-        fecha = {fecha}
-      />
+      <BrowserRouter>
+        <Route exact path="/" component={MainContainer} />
+        <Route exact path="/add" component={AddMovieContainer} />
+      </BrowserRouter>
     </Fragment>
   );
 }
