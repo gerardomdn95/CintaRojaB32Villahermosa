@@ -1,0 +1,31 @@
+button {
+    background: blue;
+    color: white;
+    height: 50px;
+    width: 100%;
+    font-size: 12px;
+}
+
+.azul {
+    background: blue;
+    color: white;
+}
+
+#azul {
+    background: darkblue;
+}
+
+.verde {
+    background: green;
+    color: white;
+}
+
+.morado {
+    background: purple;
+    color: white;
+}
+
+.brown {
+    background: brown;
+    color: white;
+}
