@@ -3,7 +3,12 @@ const path = require('path');
 const cors = require("cors");
 const router = express.Router();
 
-router.use(cors());
+router.use(cors({
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+}));
 
 const { Movie } = require("../models/movie");
 
